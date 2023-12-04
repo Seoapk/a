@@ -51,9 +51,6 @@ echo "<script> location.href='./view.php'; </script>";
 
 }
 
-
-
-
 if($action=='edit') // edit user	
 {
 // POST ids FROM HIDDEN INPUT	
