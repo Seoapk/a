@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clients Book</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- clientbook -->
+  <div class="clientbookbox" id="ClientsBook">
+    <div class="header">
+    <h3>Clients Book</h3>
+    </div>
+    <table id="userDataTable">
+      <thead>
+        <tr>
+          <th><button style="width:100%;padding:8px 11px;border-radius: 50%;color:black;background-color:yellow;" onclick="openPopup()"><b>+</b></button></th>
+          <th><input type="text" class="searchinput" id="" placeholder="Search ..." style="margin:0;"></th>
+          <th style="text-align:right;color:yellow;" class="truncate"  id="ClientTot" >00</th>
+        </tr>
+        <tr>
+          <td style="width:1%;cursor:pointer;" onclick="sortTable(0)" >ID</td>
+          <td style="width:79%;cursor:pointer;" onclick="sortTable(1)" >Name</td>
+          <td style="width:20%;text-align:right;cursor:pointer;" onclick="sortTable(2)" >Amount</td>
+        </tr>
+      </thead>
+      <tbody id="userDataBody">
+        <!-- User data rows will be inserted here -->
+      </tbody>
+      <tfoot>
+        <td colspan="3"></td>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- First popup New Client -->
+  <div class="overlay" onclick="closePopup()"></div> <!-- Background overlay -->
+  <div class="popup-container" id="newClient">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h2>New Client</h2>
+    <input type="text" id="nameInput" placeholder="Name ..." required><br>
+    <input type="tel" id="phoneInput" placeholder="Phone ..."><br>
+    <button type="submit" onclick="saveData()">Submit</button>
+  </div>
+
+  <!-- New div for add transactions -->
+  <div class="overlay" onclick="closePopup()"></div> <!-- Background overlay -->
+  <div class="popup-container" id="items">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h2>New Item</h2>
+    <input type="date" id="transactionDate"><br>
+    <input type="number" id="transactionAmount" placeholder="Enter the amount..." required><br>
+    <input type="text" id="transactionNote" placeholder="Enter a note..."><br>
+    <button type="submit" onclick="addTransaction()">Save</button>
+  </div>
+
+  <!-- New div for editing transactions -->
+  <div class="overlay" onclick="closePopup()"></div> <!-- Background overlay -->
+  <div class="popup-container" id="editItems">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h2>Edit Item</h2>
+    <input type="date" id="editTransactionDate"><br>
+    <input type="text" id="editTransactionAmount" placeholder="Enter the amount..." required><br>
+    <input type="text" id="editTransactionNote" placeholder="Enter a note..."><br>
+    <button type="submit" onclick="saveEditedTransaction()">Save</button>
+  </div>
+
+  <!-- window for info -->
+  <div class="infoClientBox" id="infoClient">
+    <div class="headerinfo">
+      <div id="userInfo">
+        <!-- user Info will be inserted here -->
+      </div>
+      <button onclick="showHome()">Home</button>
+      <button onclick="deleteUser()">Delete</button>
+      <button onclick="saveUserInfo()">Save</button>
+    </div>
+
+    <div class="itemsTable">
+      <table id="itemsTable">
+        <thead class="infoThead">
+          <tr>
+            <th><button style="margin-left:14px;" onclick="openPopupAdd()">Add+</button></th>
+            <th style="text-align: right;" class="truncate" id="transtot">00</span></th>
+          </tr>
+          <tr>
+            <td style="width:70%">Date & Note</td>
+            <td style="width:30%;text-align:right;">Amount</td>
+          </tr>
+        </thead>
+        <tbody id="itemsBody">
+          <!-- Transaction data rows will be inserted here -->
+        </tbody>
+        <tfoot>
+          <td colspan="2"></td>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <script src="function.js"></script>
+  
+<!-- Export Button -->
+<button style="width:100%" onclick="exportData()">Export Data</button></br></br>
+
+<!-- clear all data -->
+<button style="width:100%" onclick="clearLocalStorage()">Clear Data</button></br></br>
+
+<!-- Import Input -->
+<input type="file" style="width:100%" accept=".json" onchange="importData(event)">
+</body>
+</html>
